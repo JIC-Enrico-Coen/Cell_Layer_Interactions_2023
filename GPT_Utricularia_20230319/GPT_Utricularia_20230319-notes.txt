@@ -1,0 +1,33 @@
+2023 Mar 13
+
+A model of a stem consisting of an inner shaft connected to an outer skin by six equally
+spaced vertical membranes (the 'blades').
+
+The different regions are labelled with morphogens ID_AXIS, ID_BLADES, and ID_EPIDERMIS.
+
+All growth is along the polariser gradient only, which is initially set up to be vertical.
+There is no strain retention. At the start, the mesh is given a small random perturbation
+to the positions of all the vertexes, to break the symmetry and allow buckling.
+
+The clipping parameters are set so that turning on clipping shows a horizontal slice.
+
+Clipping by morphogen hides the outer cylinder.
+
+
+Options:
+
+The growth rate, where there is growth.
+            'growthrate', [], 0.04, ...
+
+The growing region. 'cyl' means the central cylinder. 'cylblades' means the central cylinder
+and the blades. 'all' means everywhere.
+            'growthregion', { 'cyl', 'cylblades', 'all' }, 'cylblades', ...
+
+Growth is set to zero within a certain distance of the top and bottom of the stem.
+            'endmargin', [], 1, ... % No growth within this distance of the initial top or bottom.
+
+'fixoutervertexes' and 'fixendvertexes' specify which axes to fix the vertexes of the
+outer cylinder or the vertexes of the top and bottom surfaces. 'z' fixes them vertically,
+'xyz' fixes them in all directions, and the empty string means not to fix them at all.
+            'fixoutervertexes', { 'z', 'xyz', '' }, '', ...
+            'fixendvertexes', { 'z', 'xyz', '' }, '' ...

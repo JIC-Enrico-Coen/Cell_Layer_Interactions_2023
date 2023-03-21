@@ -1,0 +1,10 @@
+2023 Mar 19
+
+A model of a stem consisting of a solid cylinder. It is divided into three regions, labelled with morphogens ID_AXIS, ID_BLADES, and ID_EPIDERMIS. These correspond to the similarly-named regions of the GPT_Utricularia_20230319 model. Where that model had six "blades" linking the core to the epidermis, this model has solid tissue filling the whole space.
+
+All growth is along the polariser gradient only, which is initially set up to be vertical.
+There is no strain retention. At the start, the mesh is given a small random perturbation
+to the positions of all the vertexes, to break the symmetry and allow buckling (although
+this model in fact is not prone to buckling).
+
+The options for this model (set near the end of the interaction function) are the same as for GPT_Utricularia_20230319.

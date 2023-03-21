@@ -1,0 +1,5 @@
+2023 Mar 13
+
+A model of a stem consisting of an inner shaft connected to an outer skin by six equally
+spaced vertical membranes (the 'blades'). The vertically middle third of each blade is missing.
+This is the only difference between this model and the model GPT_Utricularia_20230319.

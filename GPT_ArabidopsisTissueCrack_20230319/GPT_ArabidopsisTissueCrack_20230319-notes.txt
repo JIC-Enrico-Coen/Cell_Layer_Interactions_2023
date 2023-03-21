@@ -1,0 +1,74 @@
+2023 Mar 19
+
+A model of a solid stem with vertical growth in the core region and zero growth
+in the outer skin. Cracks form when the residual tension exceeds some level.
+
+The direction of the cracks is heavily biased by the structure of the mesh,
+because the implementation of cracks only allows them to form along the boundaries of
+the finite elements. A more ideal model would be able to split the elements themselves
+along whatever the plane of greatest tension was.
+
+All specified growth is parallel to the polariser only. The polariser is initially
+set up to have a vertical gradient, and thereafter remains fixed in the tissue and moves with it.
+
+These are the purposes of the options:
+
+Radius of the core as a fraction of the outer radius. The arithmetical expression
+used here is chosen because the mesh for this model has 6 concentric cylinders of
+elements (narrower towards the outside: the two outer layers together have a thickness
+of 1/6). By setting the core radius to a hair under 5/6, we ensure that the outer layer
+will consist of exactly the outermost cylinder.
+            'coreradius', [], 5/6 - 0.0004, ...
+
+Growth rate of the inner part of the cylinder:
+            'innergrowthrate', [], 0.04, ...
+
+Growth rate of the outer layer of the cylinder:
+            'outergrowthrate', [], 0, ...
+
+Along which axes should the outermost vertexes be fixed in space? Any
+subset of the string 'xyz'. Only 'z', 'xyz', or the empty string are useful.
+            'fixoutervertexes', { 'z', 'xyz', '' }, '', ...
+
+Bulk modulus of the outer layer. The bulk modulus of the inner core is always 1.
+            'outerbulkmodulus', {}, 1, ...
+
+Whether cracks should happen as a result of tension.
+            'crackbytension', {}, true, ...
+
+'crackheight', 'crackradius', 'crackstartangle', and 'crackendangle' are
+only used for testing purposes. A single crack is initially made at the
+location specified by these values.
+            'crackheight', {}, 0, ...
+            'crackradius', {}, 2.5*4/6-0.0001, ...
+            'crackstartangle', {}, -2*pi/3 - 0.0001, ...
+            'crackendangle', {}, -pi/3 + 0.0001, ...
+
+'makeinitcracks' determines whether any cracks should be artificially made at the start.
+Mainly for testing purposes.
+            'makeinitcracks', {}, false, ...
+
+'weakness' and 'diffusiontime' determine the distribution of the S_WEAKNESS
+morphogen. S_WEAKNESS sets the strength of the tissue: the higher the value, the lower the
+tension at which it will crack. S_WEAKNESS is always in the range from 0 to 'weakness'.
+Initially it is given an independent random value at every vertex. The distribution is then
+smoother by being allowed to diffuse for the time specified by 'diffusiontime'. After each
+diffusion step it is rescaled to the interval from zero to 'weakness'. After that time,
+its diffusivity is set to zero to freeze the pattern, and growth starts.
+            'weakness', [], 0.4, ...
+            'diffusiontime', [], 2, ...
+
+'breakingstress' is the residual stress required to make or extend a crack.
+The only difference between stress and strain is that the stress is the strain
+times the bulk modulus. By default the bulk modulus is 1 everywhere, in which
+case there is no difference. The 'outerbulkmodulus' option allows for making
+the outer layer stiffer or less stiff than the inner core.
+            'breakingstress', {}, 0.033, ...
+
+'strainretention' sets the rate at which retained strain is retained,
+i.e. 0 = instant dissipation, 1 = no dissipation. 0.5 = decay by a factor of
+exp(-0.5) in one time unit.
+            'strainretention', {}, 0.5 ...
+
+====
+
