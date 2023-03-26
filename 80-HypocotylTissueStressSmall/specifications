@@ -1,0 +1,59 @@
+FemMembranes.cpp
+FemMembranes.hpp
+FemMembranes.mdxv
+CrossSectionHex.mdxm
+HypocotylInit.mdxm
+SingleCell.mdxm
+FemMembranes.qrc
+FemMembranes.png
+FrenchFlag.mdxc
+Rainbow.mdxc
+Layers.v
+segY.func
+segZ.func
+Crack2.txt
+Crack4.txt
+Crack8.txt
+CrackedCells2.txt
+CrackedCells4.txt
+CrackedCells8.txt
+OuterFaces.txt
+AllFaces.txt
+CrossWalls.txt
+GrowVertical.txt
+GrowHorizontal.txt
+CenterVertex.txt
+SingleCell.txt
+Dirichlet.txt
+ReadMe.txt
+Arial.ttf
+ArialItalic.ttf
+Makefile
+ignore:
+MorphoDynamX.py
+*.o
+*.so
+*
+Run:
+	gnome-terminal -x bash -c "make run"
+
+LabTable:
+	xdg-open .
+
+LabTableShell:
+	OBJSHELL
+
+DynamXHelp:
+	xdg-open /usr/local/share/doc/MorphoDynamX/html/index.html
+
+Files:
+	Model:
+		OBJED FemMembranes.cpp
+	Header:
+		OBJED FemMembranes.hpp
+	Parameters:
+		OBJED FemMembranes.mdxp
+	Description:
+		OBJED ReadMe.txt
+	Specifications:
+		OBJED specifications
